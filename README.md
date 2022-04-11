@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small app to generate signature and timestamp for Walmart API.
+Application has following skeleton:
 
-Things you may want to cover:
+* Walmart Signature generation is done
 
-* Ruby version
+* A dummy API skeleton is created to cater API requests to different stores. Code can be implemeted further
 
-* System dependencies
+* Spec definitions added, need inmplementation
 
-* Configuration
+* Ruby 2.7.1, Rails 5.2
+* Used HttParty to make API calls
 
-* Database creation
+Observations
 
-* Database initialization
+* Technically the private key generated is not PEM because it doesnt contain the header and footer.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Used openssl_pkcs8_pure to generate PKCS8 signature.
