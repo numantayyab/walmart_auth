@@ -80,6 +80,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
+    openssl_pkcs8_pure (0.0.0.2)
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
@@ -159,6 +160,7 @@ DEPENDENCIES
   byebug
   httparty
   listen (>= 3.0.5, < 3.2)
+  openssl_pkcs8_pure
   puma (~> 3.11)
   rails (~> 5.2.6)
   rspec-rails

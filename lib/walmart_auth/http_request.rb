@@ -10,13 +10,13 @@ require 'httparty'
 module WalmartAuth
 
 	class HttpRequest
-		attr_accessor :url, :data
-
-		BASE_URL = "https://marketplace.walmartapis.com/v2/"
+		attr_accessor :response, :error, :data
 
 		## submit request
-        def submit(client, methd = nil)
-	      	response = HTTParty.public_send(request_method(methd), url(client), request_options(client))
+        def submit_request(**params)
+	      	response = HTTParty.public_send(request_method(params[:http_method]), params[:url],headers: params[:header],
+             body: params[:body])
+            validate_response
     	end
 
     	## default will be a GET request. Can be used for other REST APIs as well.
@@ -25,10 +25,16 @@ module WalmartAuth
     		meth
     	end
 
-    	## the endpoint will be embeded on the base url. 
-    	def url(end_point)
-    		BASE_URL + end_point
-    	end
+        def validate_response
+            case response.code
+            when 200...300 || 302
+                self.data = response.body
+                return true
+            else
+                self.error = response.error
+                return false
+            end
+        end
 	end
 
 
