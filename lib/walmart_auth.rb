@@ -1,6 +1,7 @@
 require "walmart_auth/client"
-require "walmart_auth/errors"
+require "walmart_auth/generate_signature"
 
-module WalmartOpen
-	
-end
+## we can use this class to send requests to different APIs. An implementation of Walmart is as below
+
+auth = WalmartAuth::GenerateSignature.new()
+

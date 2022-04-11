@@ -1,3 +1,10 @@
+=begin
+    
+    We are using HttParty to make api requests. The idea is to create a dumy class which 
+    will be called with the end point and desired data.    
+
+=end
+
 require 'httparty'
 
 module WalmartAuth
@@ -7,14 +14,14 @@ module WalmartAuth
 
 		BASE_URL = "https://marketplace.walmartapis.com/v2/"
 
-		def submit(client, methd = nil)
+		## submit request
+        def submit(client, methd = nil)
 	      	response = HTTParty.public_send(request_method(methd), url(client), request_options(client))
-	      	verify_response(response)
-	      	parse_response(response)
     	end
 
     	## default will be a GET request. Can be used for other REST APIs as well.
-    	def request_method(meth = 'GET')
+        ## values can be :get, :post, :put etc
+    	def request_method(meth = :get)
     		meth
     	end
 
